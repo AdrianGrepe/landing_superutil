@@ -3,7 +3,6 @@ import { Link } from "react-scroll";
 import image1 from "../assets/images/image1.png";
 import image2 from "../assets/images/image2.png";
 import image3 from "../assets/images/image3.jpg";
-import video from "../assets/videos/video.mp4";
 import Button from "./Button";
 import Carousel from "./Carousel";
 import styles from "./Hero.module.css";
@@ -56,7 +55,6 @@ function Hero() {
         interval={10000}
         visibleSlides={1}
       />
-      {/* <video className={styles.video} src={video} autoPlay loop></video> */}
       <Link to="products" smooth={true} duration={500}>
         <Button className={styles.hero__button}>Ver Productos</Button>
       </Link>
