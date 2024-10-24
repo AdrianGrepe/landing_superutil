@@ -40,16 +40,6 @@ function SearchBar() {
         }))
     );
 
-    // const materialResults = materials
-    //   .filter((material) =>
-    //     material.name.toLowerCase().includes(lowercaseQuery)
-    //   )
-    //   .map((material) => ({
-    //     type: "material",
-    //     name: material.name,
-    //     id: material.id,
-    //   }));
-
     return [...modelResults];
   };
 
@@ -71,27 +61,31 @@ function SearchBar() {
   };
 
   return (
-    <div className={styles.searchCenter} ref={searchRef}>
-      <div className={styles.searchContainer}>
+    <div className={styles.search__center} ref={searchRef}>
+      <div className={styles.search__container}>
         <input
           type="text"
           placeholder="Buscar modelo de auto..."
-          className={styles.searchInput}
+          className={styles.search__input}
           value={query}
           onChange={handleSearch}
           aria-label="Buscar fundas de auto"
           aria-expanded={isOpen}
           aria-controls="search-results"
         />
-        <button className={styles.searchButton}>
+        <button className={styles.search__button}>
           <IconSearch size={25} color="white" />
         </button>
         {isOpen && results.length > 0 && (
-          <ul id="search-results" className={styles.resultsList} role="listbox">
+          <ul
+            id="search-results"
+            className={styles.results__list}
+            role="listbox"
+          >
             {results.map((result, index) => (
               <li
                 key={index}
-                className={styles.resultItem}
+                className={styles.result__item}
                 onClick={() => handleSelectResult(result)}
                 role="option"
                 aria-selected={false}
@@ -99,7 +93,7 @@ function SearchBar() {
                 {result.type === "model" ? (
                   <>
                     <span>{result.name}</span>
-                    <span className={styles.materialTag}>
+                    <span className={styles.material__tag}>
                       {result.material}
                     </span>
                   </>
