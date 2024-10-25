@@ -1,10 +1,11 @@
 .header {
   background-color: var(--gris);
   color: var(--blanco);
-  /* position: sticky; */
+  position: sticky;
   top: 0;
   z-index: 1000;
   position: relative;
+  padding: 0.5rem 0;
 }
 
 .nav__container {
@@ -12,12 +13,12 @@
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem;
   /* position: relative; */
 }
 
 .logo {
-  width: 20rem;
+  width: auto;
+  max-width: 15rem;
   height: auto;
   margin: 0 1rem;
 }
@@ -54,6 +55,7 @@
 @media (max-width: 480px) {
   .menuToggle {
     display: block;
+    font-size: 3.2rem;
   }
 
   .nav {
@@ -65,12 +67,19 @@
     background-color: var(--gris);
     flex-direction: column;
     align-items: center;
-    padding: 1rem 0;
     display: none;
+    padding: 1rem;
+    gap: 2rem;
+  }
+
+  .nav__link {
+    font-size: 1.4rem;
+    width: 100%;
   }
 
   .nav.open {
     display: flex;
+    transition: all 0.3s ease;
   }
 
   .nav.open a {

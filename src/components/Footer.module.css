@@ -28,7 +28,7 @@
 }
 
 .logo {
-  width: 20rem;
+  width: 15rem;
   height: auto;
   margin: 0 1rem;
 }
@@ -63,5 +63,13 @@
   .footer__section {
     margin-bottom: 3rem;
     text-align: left;
+  }
+
+  .footer__section h3 {
+    font-size: 1.8rem;
+  }
+
+  .footer__section p {
+    font-size: 1.2rem;
   }
 }

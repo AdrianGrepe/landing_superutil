@@ -13,6 +13,8 @@ function Carousel({
 }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const intervalRef = useRef(null);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   const startSlider = () => {
     if (autoplay) {
@@ -53,8 +55,32 @@ function Carousel({
     startSlider();
   };
 
+  // Manejo de eventos táctiles
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current - touchEndX.current > 50) {
+      handleNext();
+    }
+
+    if (touchStartX.current - touchEndX.current < -50) {
+      handlePrev();
+    }
+  };
+
   return (
-    <div className={`${classCarousel}`}>
+    <div
+      className={`${classCarousel}`}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <div
         className={`${classContainer}`}
         style={{
