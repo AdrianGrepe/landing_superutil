@@ -49,6 +49,7 @@
   color: var(--grisClaro);
   margin-right: 1rem;
   transition: all 0.3s ease;
+  margin-top: 1rem;
 }
 
 .icon:hover {
@@ -56,6 +57,10 @@
 }
 
 @media (max-width: 480px) {
+  .contacto {
+    justify-content: start;
+  }
+
   .footer__content {
     flex-direction: column;
   }

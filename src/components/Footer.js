@@ -8,6 +8,9 @@ import {
   IconBrandYoutube,
   IconBrandTiktok,
   IconMail,
+  IconBrandWhatsapp,
+  IconBrandTelegram,
+  IconBrandMessenger,
 } from "@tabler/icons-react";
 
 function Footer() {
@@ -23,37 +26,74 @@ function Footer() {
           </div>
           <div className={styles.footer__section}>
             <h3>Contacto</h3>
-            <p>Email: contacto@superutil.mx</p>
-            <p>Teléfono: 55 4002 8524</p>
+            <div className={styles.footer__section}>
+              <a
+                href="mailto:contacto@superutil.mx"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconMail className={styles.icon} />
+              </a>
+              <a
+                href="https://wa.me/525540028424"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconBrandWhatsapp className={styles.icon} />
+              </a>
+              <a
+                href="https://t.me/Super_Util_Bot"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconBrandTelegram className={styles.icon} />
+              </a>
+              <a
+                href="https://m.me/ProductosSuperUtil"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconBrandMessenger className={styles.icon} />
+              </a>
+            </div>
           </div>
           <div className={styles.footer__section}>
             <h3>Síguenos</h3>
-            <div className={styles.icons}>
-              <a
-                href="https://www.facebook.com/ProductosSuperUtil"
+            <a
+              href="https://www.facebook.com/ProductosSuperUtil"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <IconBrandFacebook className={styles.icon} />
+            </a>
+            <a
+              href="https://www.instagram.com/superutil_mex/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <IconBrandInstagram className={styles.icon} />
+            </a>
+            <a
+              href="https://www.tiktok.com/@super_util"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <IconBrandTiktok className={styles.icon} />
+            </a>
+            <a
+              href="https://www.youtube.com/channel/UCvKide4sB9zieDOeRqTH_ww"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <IconBrandYoutube className={styles.icon} />
+            </a>
+            {/* <a
+                href="mailto:contacto@superutil.mx"
                 target="_blank"
+                rel="noreferrer"
               >
-                <IconBrandFacebook className={styles.icon} />
-              </a>
-              <a
-                href="https://www.instagram.com/superutil_mex/"
-                target="_blank"
-              >
-                <IconBrandInstagram className={styles.icon} />
-              </a>
-              <a href="https://www.tiktok.com/@super_util" target="_blank">
-                <IconBrandTiktok className={styles.icon} />
-              </a>
-              <a
-                href="https://www.youtube.com/channel/UCvKide4sB9zieDOeRqTH_ww"
-                target="_blank"
-              >
-                <IconBrandYoutube className={styles.icon} />
-              </a>
-              <a href="mailto:contacto@superutil.mx" target="_blank">
                 <IconMail className={styles.icon} />
-              </a>
-            </div>
+              </a> */}
           </div>
         </div>
       </div>

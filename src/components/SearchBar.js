@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { IconSearch } from "@tabler/icons-react";
+import { Link } from "react-scroll";
 import styles from "./SearchBar.module.css";
 
 // Importa los datos del catálogo
-import { fundas, materials } from "./Catalog";
+import { fundas } from "./Catalog";
 
 function SearchBar() {
   const [query, setQuery] = useState("");
@@ -70,38 +71,45 @@ function SearchBar() {
           value={query}
           onChange={handleSearch}
           aria-label="Buscar fundas de auto"
-          aria-expanded={isOpen}
           aria-controls="search-results"
         />
         <button className={styles.search__button}>
           <IconSearch size={25} color="white" />
         </button>
-        {isOpen && results.length > 0 && (
+        {isOpen && (
           <ul
             id="search-results"
             className={styles.results__list}
             role="listbox"
           >
-            {results.map((result, index) => (
-              <li
-                key={index}
-                className={styles.result__item}
-                onClick={() => handleSelectResult(result)}
-                role="option"
-                aria-selected={false}
-              >
-                {result.type === "model" ? (
-                  <>
+            {results.length > 0 ? (
+              results.map((result, index) => (
+                <li
+                  key={index}
+                  className={styles.result__item}
+                  onClick={() => handleSelectResult(result)}
+                  role="option"
+                  aria-selected={false}
+                >
+                  {result.type === "model" ? (
+                    <>
+                      <span>{result.name}</span>
+                      <span className={styles.material__tag}>
+                        {result.material}
+                      </span>
+                    </>
+                  ) : (
                     <span>{result.name}</span>
-                    <span className={styles.material__tag}>
-                      {result.material}
-                    </span>
-                  </>
-                ) : (
-                  <span>{result.name}</span>
-                )}
+                  )}
+                </li>
+              ))
+            ) : (
+              <li className={styles.result__item}>
+                <Link to="contact" smooth={true} duration={500}>
+                  ¿No encontraste tu modelo? Contáctanos
+                </Link>
               </li>
-            ))}
+            )}
           </ul>
         )}
       </div>
