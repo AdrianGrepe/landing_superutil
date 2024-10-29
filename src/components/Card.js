@@ -4,7 +4,7 @@ import styles from "./Card.module.css";
 
 function Card({ image, title, description, models = [] }) {
   const handleModelClick = (model) => {
-    window.open(model.url, "__blank");
+    window.open(model.url, "_blank");
   };
 
   return (

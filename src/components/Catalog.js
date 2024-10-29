@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Element } from "react-scroll";
 import Button from "./Button";
 import Card from "./Card";
+import VideoPlayer from "./VideoPlayer";
 import Carousel from "./Carousel";
 import sedan from "../assets/images/sedan.jpeg";
 import suv from "../assets/images/suv.jpeg";
@@ -14,16 +15,19 @@ export const materials = [
     id: "transpirable",
     name: "Transpirable",
     description: "Ideal para climas cálidos y secos",
+    videoUrl: "MtQSNG2Imdw",
   },
   {
     id: "impermeable",
     name: "Impermeable",
     description: "Para climas humedos y lluviosos",
+    videoUrl: "YEic6ZhIl-Q",
   },
   {
     id: "afelpada",
     name: "Afelpada",
     description: "Protege de rasguños y abrasiones",
+    videoUrl: "Voz4BciM8mo",
   },
 ];
 
@@ -432,10 +436,15 @@ export const fundas = [
 
 function Catalog() {
   const [selectedType, setSelectedType] = useState(null);
+  const [selectedVideo, setSelectedVideo] = useState(null);
   const [visibleSlides, setVisibleSlides] = useState(3);
 
   const handleTypeClick = (type) => {
     setSelectedType(type);
+    const selecteMaterial = materials.find((material) => material.id === type);
+    if (selecteMaterial) {
+      setSelectedVideo(selecteMaterial.videoUrl);
+    }
   };
 
   const filteredFundas = selectedType
@@ -492,6 +501,10 @@ function Catalog() {
           </Button>
         ))}
       </div>
+
+      {selectedVideo && (
+        <VideoPlayer videoId={selectedVideo} autoplay={1} mute={0} loop={1} />
+      )}
       {selectedType && (
         <Carousel
           classCarousel={styles.carousel}

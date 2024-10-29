@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./Carousel.module.css";
 
 function Carousel({
@@ -10,13 +10,20 @@ function Carousel({
   autoplay = true,
   interval = 1000,
   visibleSlides = 1,
+  showButtons = true,
 }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const intervalRef = useRef(null);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  const startSlider = () => {
+  const stopSlider = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+  }, []);
+
+  const startSlider = useCallback(() => {
     if (autoplay) {
       stopSlider();
       intervalRef.current = setInterval(() => {
@@ -26,18 +33,12 @@ function Carousel({
         );
       }, interval);
     }
-  };
-
-  const stopSlider = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-    }
-  };
+  }, [autoplay, interval, slides.length, visibleSlides, stopSlider]);
 
   useEffect(() => {
     startSlider();
     return () => stopSlider();
-  }, [slides.length, autoplay, interval, visibleSlides]);
+  }, [startSlider, stopSlider]);
 
   const handlePrev = () => {
     setCurrentSlide((prevSlide) =>
@@ -100,12 +101,16 @@ function Carousel({
           </div>
         ))}
       </div>
-      <button className={styles.prev} onClick={handlePrev}>
-        &#10094;
-      </button>
-      <button className={styles.next} onClick={handleNext}>
-        &#10095;
-      </button>
+      {showButtons && (
+        <>
+          <button className={styles.prev} onClick={handlePrev}>
+            &#10094;
+          </button>
+          <button className={styles.next} onClick={handleNext}>
+            &#10095;
+          </button>
+        </>
+      )}
     </div>
   );
 }
